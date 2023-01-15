@@ -60,7 +60,7 @@ public class FotoServiceImpl implements FotoService {
     @Override
     public List<FotoDTO> getAllEntities() throws Exception {
         log.debug("Solicitud para listar todas las Entidades tipo Foto");
-        return entityMapping.obtenerDto(entityRepository.findAll());
+        return entityMapping.getDto(entityRepository.findAll());
     }
 
     /**
@@ -73,7 +73,7 @@ public class FotoServiceImpl implements FotoService {
     @Override
     public Page<FotoDTO> getAllEntitiesPaged(Pageable pageable) throws Exception {
         log.debug("Solicitud para listar todas las Entidades tipo Foto con paginacion");
-        return entityRepository.findAll(pageable).map(entityMapping::obtenerDto);
+        return entityRepository.findAll(pageable).map(entityMapping::getDto);
     }
 
     /**
@@ -91,7 +91,7 @@ public class FotoServiceImpl implements FotoService {
         Foto entity = entityMapping.getEntity(entityDTO);
         entity = entityRepository.save(entity);
 
-        FotoDTO actualEntity = entityMapping.obtenerDto(entity);
+        FotoDTO actualEntity = entityMapping.getDto(entity);
         return actualEntity;
     }
 
@@ -107,7 +107,7 @@ public class FotoServiceImpl implements FotoService {
         log.debug("Solicitud para buscar la Entidad tipo Foto: {}", id);
         Foto searchedEntity = entityRepository.findById(Long.parseLong(id))
                 .orElseThrow(() -> new EntityNotFoundException(id));
-        return entityMapping.obtenerDto(searchedEntity);
+        return entityMapping.getDto(searchedEntity);
     }
 
     /**
@@ -132,7 +132,7 @@ public class FotoServiceImpl implements FotoService {
     @Override
     public List<FotoDTO> searchEntities(String query) throws Exception {
         log.debug("Solicitud para listar todas las Entidades tipo Foto: {}", query);
-        return entityMapping.obtenerDto(entityRepository.searchEntities(query));
+        return entityMapping.getDto(entityRepository.searchEntities(query));
     }
 
     /**
@@ -146,6 +146,6 @@ public class FotoServiceImpl implements FotoService {
     @Override
     public Page<FotoDTO> searchEntitiesPaged(String query, Pageable pageable) {
         log.debug("Solicitud para buscar una pagina de la entidad tipo Foto para consulta {}", query);
-        return entityRepository.searchEntities(query, pageable).map(entityMapping::obtenerDto);
+        return entityRepository.searchEntities(query, pageable).map(entityMapping::getDto);
     }
 }

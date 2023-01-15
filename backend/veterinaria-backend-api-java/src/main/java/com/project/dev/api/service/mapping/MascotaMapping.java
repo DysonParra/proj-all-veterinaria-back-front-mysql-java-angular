@@ -48,7 +48,7 @@ public interface MascotaMapping extends GenericMapping<MascotaDTO, Mascota> {
     // Deben ser el campo clave de la base de datos.
     @Mapping(source = "intIdMascota", target = "intIdMascota")
     @Override
-    public MascotaDTO obtenerDto(Mascota entity);
+    public MascotaDTO getDto(Mascota entity);
 
     /**
      * TODO: Definición de {@code withId}.

@@ -48,7 +48,7 @@ public interface FotoMapping extends GenericMapping<FotoDTO, Foto> {
     // Deben ser el campo clave de la base de datos.
     @Mapping(source = "intIdFoto", target = "intIdFoto")
     @Override
-    public FotoDTO obtenerDto(Foto entity);
+    public FotoDTO getDto(Foto entity);
 
     /**
      * TODO: Definición de {@code withId}.

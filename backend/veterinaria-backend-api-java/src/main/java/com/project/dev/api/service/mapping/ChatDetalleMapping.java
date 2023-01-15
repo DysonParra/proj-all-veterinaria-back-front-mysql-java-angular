@@ -48,7 +48,7 @@ public interface ChatDetalleMapping extends GenericMapping<ChatDetalleDTO, ChatD
     // Deben ser el campo clave de la base de datos.
     @Mapping(source = "intIdChatDetalle", target = "intIdChatDetalle")
     @Override
-    public ChatDetalleDTO obtenerDto(ChatDetalle entity);
+    public ChatDetalleDTO getDto(ChatDetalle entity);
 
     /**
      * TODO: Definición de {@code withId}.

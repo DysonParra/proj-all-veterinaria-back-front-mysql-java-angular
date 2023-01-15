@@ -60,7 +60,7 @@ public class ChatServiceImpl implements ChatService {
     @Override
     public List<ChatDTO> getAllEntities() throws Exception {
         log.debug("Solicitud para listar todas las Entidades tipo Chat");
-        return entityMapping.obtenerDto(entityRepository.findAll());
+        return entityMapping.getDto(entityRepository.findAll());
     }
 
     /**
@@ -73,7 +73,7 @@ public class ChatServiceImpl implements ChatService {
     @Override
     public Page<ChatDTO> getAllEntitiesPaged(Pageable pageable) throws Exception {
         log.debug("Solicitud para listar todas las Entidades tipo Chat con paginacion");
-        return entityRepository.findAll(pageable).map(entityMapping::obtenerDto);
+        return entityRepository.findAll(pageable).map(entityMapping::getDto);
     }
 
     /**
@@ -91,7 +91,7 @@ public class ChatServiceImpl implements ChatService {
         Chat entity = entityMapping.getEntity(entityDTO);
         entity = entityRepository.save(entity);
 
-        ChatDTO actualEntity = entityMapping.obtenerDto(entity);
+        ChatDTO actualEntity = entityMapping.getDto(entity);
         return actualEntity;
     }
 
@@ -107,7 +107,7 @@ public class ChatServiceImpl implements ChatService {
         log.debug("Solicitud para buscar la Entidad tipo Chat: {}", id);
         Chat searchedEntity = entityRepository.findById(Long.parseLong(id))
                 .orElseThrow(() -> new EntityNotFoundException(id));
-        return entityMapping.obtenerDto(searchedEntity);
+        return entityMapping.getDto(searchedEntity);
     }
 
     /**
@@ -132,7 +132,7 @@ public class ChatServiceImpl implements ChatService {
     @Override
     public List<ChatDTO> searchEntities(String query) throws Exception {
         log.debug("Solicitud para listar todas las Entidades tipo Chat: {}", query);
-        return entityMapping.obtenerDto(entityRepository.searchEntities(query));
+        return entityMapping.getDto(entityRepository.searchEntities(query));
     }
 
     /**
@@ -146,6 +146,6 @@ public class ChatServiceImpl implements ChatService {
     @Override
     public Page<ChatDTO> searchEntitiesPaged(String query, Pageable pageable) {
         log.debug("Solicitud para buscar una pagina de la entidad tipo Chat para consulta {}", query);
-        return entityRepository.searchEntities(query, pageable).map(entityMapping::obtenerDto);
+        return entityRepository.searchEntities(query, pageable).map(entityMapping::getDto);
     }
 }
