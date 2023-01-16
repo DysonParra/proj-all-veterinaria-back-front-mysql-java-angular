@@ -15,7 +15,7 @@
 package com.project.dev.api.web.rest;
 
 import com.project.dev.api.dto.FotoDTO;
-import com.project.dev.api.service.FotoService;
+import com.project.dev.api.service.implementation.FotoServiceImpl;
 import com.project.dev.api.web.rest.assembler.FotoRestAssembler;
 import com.project.dev.api.web.rest.util.PaginationUtil;
 import io.swagger.annotations.Api;
@@ -61,7 +61,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class FotoRest {
 
     private final Logger log = LoggerFactory.getLogger(FotoRest.class);
-    private final FotoService entityService;
+    private final FotoServiceImpl entityService;
     private final FotoRestAssembler entityRestAssembler;
 
     /**
@@ -70,7 +70,7 @@ public class FotoRest {
      * @param entityService       servicio de la entidad.
      * @param entityRestAssembler ensamblador de recurso de la entidad.
      */
-    public FotoRest(FotoService entityService,
+    public FotoRest(FotoServiceImpl entityService,
             FotoRestAssembler entityRestAssembler) {
         this.entityService = entityService;
         this.entityRestAssembler = entityRestAssembler;

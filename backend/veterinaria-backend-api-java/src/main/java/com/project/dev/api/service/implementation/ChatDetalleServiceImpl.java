@@ -17,7 +17,7 @@ package com.project.dev.api.service.implementation;
 import com.project.dev.api.domain.ChatDetalle;
 import com.project.dev.api.dto.ChatDetalleDTO;
 import com.project.dev.api.repository.ChatDetalleRepository;
-import com.project.dev.api.service.ChatDetalleService;
+import com.project.dev.api.service.GenericService;
 import com.project.dev.api.service.exception.EntityNotFoundException;
 import com.project.dev.api.service.mapping.ChatDetalleMapping;
 import java.util.List;
@@ -36,7 +36,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 @org.springframework.stereotype.Service
-public class ChatDetalleServiceImpl implements ChatDetalleService {
+public class ChatDetalleServiceImpl implements GenericService<ChatDetalleDTO> {
 
     private final Logger log = LoggerFactory.getLogger(ChatDetalleServiceImpl.class);
     private final ChatDetalleRepository entityRepository;

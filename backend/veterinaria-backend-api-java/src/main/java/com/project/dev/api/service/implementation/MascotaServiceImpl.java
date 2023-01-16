@@ -17,7 +17,7 @@ package com.project.dev.api.service.implementation;
 import com.project.dev.api.domain.Mascota;
 import com.project.dev.api.dto.MascotaDTO;
 import com.project.dev.api.repository.MascotaRepository;
-import com.project.dev.api.service.MascotaService;
+import com.project.dev.api.service.GenericService;
 import com.project.dev.api.service.exception.EntityNotFoundException;
 import com.project.dev.api.service.mapping.MascotaMapping;
 import java.util.List;
@@ -36,7 +36,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 @org.springframework.stereotype.Service
-public class MascotaServiceImpl implements MascotaService {
+public class MascotaServiceImpl implements GenericService<MascotaDTO> {
 
     private final Logger log = LoggerFactory.getLogger(MascotaServiceImpl.class);
     private final MascotaRepository entityRepository;

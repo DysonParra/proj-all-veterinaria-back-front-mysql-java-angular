@@ -15,7 +15,7 @@
 package com.project.dev.api.web.rest;
 
 import com.project.dev.api.dto.ChatDetalleDTO;
-import com.project.dev.api.service.ChatDetalleService;
+import com.project.dev.api.service.implementation.ChatDetalleServiceImpl;
 import com.project.dev.api.web.rest.assembler.ChatDetalleRestAssembler;
 import com.project.dev.api.web.rest.util.PaginationUtil;
 import io.swagger.annotations.Api;
@@ -61,7 +61,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class ChatDetalleRest {
 
     private final Logger log = LoggerFactory.getLogger(ChatDetalleRest.class);
-    private final ChatDetalleService entityService;
+    private final ChatDetalleServiceImpl entityService;
     private final ChatDetalleRestAssembler entityRestAssembler;
 
     /**
@@ -70,7 +70,7 @@ public class ChatDetalleRest {
      * @param entityService       servicio de la entidad.
      * @param entityRestAssembler ensamblador de recurso de la entidad.
      */
-    public ChatDetalleRest(ChatDetalleService entityService,
+    public ChatDetalleRest(ChatDetalleServiceImpl entityService,
             ChatDetalleRestAssembler entityRestAssembler) {
         this.entityService = entityService;
         this.entityRestAssembler = entityRestAssembler;

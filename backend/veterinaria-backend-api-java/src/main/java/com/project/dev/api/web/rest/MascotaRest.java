@@ -15,7 +15,7 @@
 package com.project.dev.api.web.rest;
 
 import com.project.dev.api.dto.MascotaDTO;
-import com.project.dev.api.service.MascotaService;
+import com.project.dev.api.service.implementation.MascotaServiceImpl;
 import com.project.dev.api.web.rest.assembler.MascotaRestAssembler;
 import com.project.dev.api.web.rest.util.PaginationUtil;
 import io.swagger.annotations.Api;
@@ -61,7 +61,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class MascotaRest {
 
     private final Logger log = LoggerFactory.getLogger(MascotaRest.class);
-    private final MascotaService entityService;
+    private final MascotaServiceImpl entityService;
     private final MascotaRestAssembler entityRestAssembler;
 
     /**
@@ -70,7 +70,7 @@ public class MascotaRest {
      * @param entityService       servicio de la entidad.
      * @param entityRestAssembler ensamblador de recurso de la entidad.
      */
-    public MascotaRest(MascotaService entityService,
+    public MascotaRest(MascotaServiceImpl entityService,
             MascotaRestAssembler entityRestAssembler) {
         this.entityService = entityService;
         this.entityRestAssembler = entityRestAssembler;
