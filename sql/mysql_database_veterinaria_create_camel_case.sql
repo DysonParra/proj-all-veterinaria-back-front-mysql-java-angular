@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS veterinaria;
-CREATE DATABASE IF NOT EXISTS veterinaria;
-USE veterinaria;
+DROP DATABASE IF EXISTS `veterinaria`;
+CREATE DATABASE IF NOT EXISTS `veterinaria`;
+USE `veterinaria`;
 
-CREATE TABLE IF NOT EXISTS `Chat`(
+CREATE TABLE IF NOT EXISTS `Chat` (
     `idChat`                            BIGINT              NOT NULL PRIMARY KEY,
     `remitente`                         INT                     NULL DEFAULT NULL,
     `receptor`                          INT                     NULL DEFAULT NULL,
@@ -12,20 +12,20 @@ CREATE TABLE IF NOT EXISTS `Chat`(
     `idChatDetalle`                     BIGINT                  NULL DEFAULT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `ChatDetalle`(
+CREATE TABLE IF NOT EXISTS `ChatDetalle` (
     `idChatDetalle`                     BIGINT              NOT NULL PRIMARY KEY,
     `idPersona`                         BIGINT                  NULL DEFAULT NULL,
     `ultima`                            TIMESTAMP               NULL DEFAULT CURRENT_TIMESTAMP(),
     `escribiendo`                       ENUM('no', 'si')        NULL DEFAULT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Foto`(
+CREATE TABLE IF NOT EXISTS `Foto` (
     `idFoto`                            BIGINT              NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `idMascota`                         BIGINT                  NULL DEFAULT NULL,
     `imagen`                            VARCHAR(8000)           NULL DEFAULT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Mascota`(
+CREATE TABLE IF NOT EXISTS `Mascota` (
     `idMascota`                         BIGINT              NOT NULL PRIMARY KEY,
     `idPersona`                         BIGINT                  NULL DEFAULT NULL,
     `nombre`                            VARCHAR(100)            NULL DEFAULT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `Mascota`(
     `tipo`                              VARCHAR(100)            NULL DEFAULT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Persona`(
+CREATE TABLE IF NOT EXISTS `Persona` (
     `idPersona`                         BIGINT              NOT NULL PRIMARY KEY,
     `nombres`                           VARCHAR(200)            NULL DEFAULT NULL,
     `celular`                           VARCHAR(30)             NULL DEFAULT NULL,
