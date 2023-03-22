@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {ChatRest} se encarga de realizar tareas específicas.
+ * @fileoverview    {ChatRest}
  *
  * @version         2.0
  *

@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {ChatDTO} se encarga de realizar tareas específicas.
+ * @fileoverview    {ChatDTO}
  *
  * @version         2.0
  *

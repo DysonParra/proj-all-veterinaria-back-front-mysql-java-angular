@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {MascotaMapping} se encarga de realizar tareas específicas.
+ * @fileoverview    {MascotaMapping}
  *
  * @version         2.0
  *

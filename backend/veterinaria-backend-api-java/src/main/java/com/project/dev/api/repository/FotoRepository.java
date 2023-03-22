@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {FotoRepository} se encarga de realizar tareas específicas.
+ * @fileoverview    {FotoRepository}
  *
  * @version         2.0
  *

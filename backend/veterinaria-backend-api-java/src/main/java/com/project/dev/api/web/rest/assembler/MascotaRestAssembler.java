@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {MascotaRestAssembler} se encarga de realizar tareas específicas.
+ * @fileoverview    {MascotaRestAssembler}
  *
  * @version         2.0
  *

@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {ChatRestAssembler} se encarga de realizar tareas específicas.
+ * @fileoverview    {ChatRestAssembler}
  *
  * @version         2.0
  *

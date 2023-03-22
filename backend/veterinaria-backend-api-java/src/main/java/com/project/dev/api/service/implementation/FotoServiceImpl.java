@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {FotoServiceImpl} se encarga de realizar tareas específicas.
+ * @fileoverview    {FotoServiceImpl}
  *
  * @version         2.0
  *

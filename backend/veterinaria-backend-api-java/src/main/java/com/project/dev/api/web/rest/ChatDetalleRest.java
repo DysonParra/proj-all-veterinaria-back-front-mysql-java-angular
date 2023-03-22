@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {ChatDetalleRest} se encarga de realizar tareas específicas.
+ * @fileoverview    {ChatDetalleRest}
  *
  * @version         2.0
  *

@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {FotoMapping} se encarga de realizar tareas específicas.
+ * @fileoverview    {FotoMapping}
  *
  * @version         2.0
  *

@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {FotoRestAssembler} se encarga de realizar tareas específicas.
+ * @fileoverview    {FotoRestAssembler}
  *
  * @version         2.0
  *

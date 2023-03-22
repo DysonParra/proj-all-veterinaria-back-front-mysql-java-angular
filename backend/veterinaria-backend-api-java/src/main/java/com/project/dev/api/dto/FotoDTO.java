@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {FotoDTO} se encarga de realizar tareas específicas.
+ * @fileoverview    {FotoDTO}
  *
  * @version         2.0
  *

@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {MascotaServiceImpl} se encarga de realizar tareas específicas.
+ * @fileoverview    {MascotaServiceImpl}
  *
  * @version         2.0
  *

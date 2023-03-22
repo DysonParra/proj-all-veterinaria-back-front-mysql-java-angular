@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {MascotaRepository} se encarga de realizar tareas específicas.
+ * @fileoverview    {MascotaRepository}
  *
  * @version         2.0
  *
