@@ -24,7 +24,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * TODO: Definición de {@code Mascota}.
+ * TODO: Description of {@code Mascota}.
  *
  * @author Dyson Parra
  * @since 11

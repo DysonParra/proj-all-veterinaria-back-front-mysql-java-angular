@@ -22,7 +22,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * TODO: Definición de {@code ChatDetalleDTO}.
+ * TODO: Description of {@code ChatDetalleDTO}.
  *
  * @author Dyson Parra
  * @since 11

@@ -24,7 +24,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * TODO: Definición de {@code Chat}.
+ * TODO: Description of {@code Chat}.
  *
  * @author Dyson Parra
  * @since 11

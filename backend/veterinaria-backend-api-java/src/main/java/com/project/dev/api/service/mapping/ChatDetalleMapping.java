@@ -20,7 +20,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 /**
- * TODO: Definición de {@code ChatDetalleMapping}.
+ * TODO: Description of {@code ChatDetalleMapping}.
  *
  * @author Dyson Parra
  * @since 11
@@ -51,7 +51,7 @@ public interface ChatDetalleMapping extends GenericMapping<ChatDetalleDTO, ChatD
     public ChatDetalleDTO getDto(ChatDetalle entity);
 
     /**
-     * TODO: Definición de {@code withId}.
+     * TODO: Description of {@code withId}.
      *
      * @param strId
      * @return

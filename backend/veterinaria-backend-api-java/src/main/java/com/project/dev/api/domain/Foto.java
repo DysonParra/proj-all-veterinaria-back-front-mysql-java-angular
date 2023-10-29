@@ -24,7 +24,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * TODO: Definición de {@code Foto}.
+ * TODO: Description of {@code Foto}.
  *
  * @author Dyson Parra
  * @since 11
