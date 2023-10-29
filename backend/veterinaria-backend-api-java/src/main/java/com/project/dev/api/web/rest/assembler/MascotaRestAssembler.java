@@ -25,7 +25,7 @@ import org.springframework.stereotype.Component;
  * TODO: Definición de {@code MascotaRestAssembler}.
  *
  * @author Dyson Parra
- * @since 1.8
+ * @since 11
  */
 @Component
 public class MascotaRestAssembler implements RepresentationModelAssembler<MascotaDTO, EntityModel<MascotaDTO>> {
