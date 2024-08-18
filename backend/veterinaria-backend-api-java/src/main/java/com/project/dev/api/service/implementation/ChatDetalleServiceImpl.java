@@ -91,8 +91,8 @@ public class ChatDetalleServiceImpl implements GenericService<ChatDetalleDTO> {
         ChatDetalle entity = entityMapping.getEntity(entityDTO);
         entity = entityRepository.save(entity);
 
-        ChatDetalleDTO actualEntity = entityMapping.getDto(entity);
-        return actualEntity;
+        ChatDetalleDTO currrentEntity = entityMapping.getDto(entity);
+        return currrentEntity;
     }
 
     /**

@@ -91,8 +91,8 @@ public class FotoServiceImpl implements GenericService<FotoDTO> {
         Foto entity = entityMapping.getEntity(entityDTO);
         entity = entityRepository.save(entity);
 
-        FotoDTO actualEntity = entityMapping.getDto(entity);
-        return actualEntity;
+        FotoDTO currrentEntity = entityMapping.getDto(entity);
+        return currrentEntity;
     }
 
     /**

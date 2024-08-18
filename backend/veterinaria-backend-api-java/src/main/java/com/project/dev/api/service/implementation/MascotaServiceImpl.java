@@ -91,8 +91,8 @@ public class MascotaServiceImpl implements GenericService<MascotaDTO> {
         Mascota entity = entityMapping.getEntity(entityDTO);
         entity = entityRepository.save(entity);
 
-        MascotaDTO actualEntity = entityMapping.getDto(entity);
-        return actualEntity;
+        MascotaDTO currrentEntity = entityMapping.getDto(entity);
+        return currrentEntity;
     }
 
     /**

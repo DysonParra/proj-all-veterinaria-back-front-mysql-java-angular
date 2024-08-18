@@ -91,8 +91,8 @@ public class ChatServiceImpl implements GenericService<ChatDTO> {
         Chat entity = entityMapping.getEntity(entityDTO);
         entity = entityRepository.save(entity);
 
-        ChatDTO actualEntity = entityMapping.getDto(entity);
-        return actualEntity;
+        ChatDTO currrentEntity = entityMapping.getDto(entity);
+        return currrentEntity;
     }
 
     /**
