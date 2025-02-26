@@ -49,7 +49,7 @@ public interface ChatMapping extends GenericMapping<ChatDTO, Chat> {
     public ChatDTO getDto(Chat entity);
 
     /**
-     * TODO: Description of {@code withId}.
+     * TODO: Description of method {@code withId}.
      *
      * @param strId
      * @return

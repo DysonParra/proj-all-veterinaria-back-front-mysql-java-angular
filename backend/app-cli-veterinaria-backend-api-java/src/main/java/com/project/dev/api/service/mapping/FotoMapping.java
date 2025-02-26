@@ -49,7 +49,7 @@ public interface FotoMapping extends GenericMapping<FotoDTO, Foto> {
     public FotoDTO getDto(Foto entity);
 
     /**
-     * TODO: Description of {@code withId}.
+     * TODO: Description of method {@code withId}.
      *
      * @param strId
      * @return
