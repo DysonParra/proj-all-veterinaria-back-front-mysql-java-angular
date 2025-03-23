@@ -44,7 +44,7 @@ public class Chat implements Serializable {
     private Integer intRemitente;
     private Integer intReceptor;
     @Lob
-    @Column(length = 65535, columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String txtMensaje;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dtFecha;

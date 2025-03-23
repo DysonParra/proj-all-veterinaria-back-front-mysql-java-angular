@@ -43,7 +43,7 @@ public class ChatDetalle implements Serializable {
     private Long intIdChatDetalle;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dtUltima;
-    @Column(length = 2, columnDefinition = "enum")
+    @Column(columnDefinition = "enum")
     private String enmEscribiendo;
     @JoinColumn(name = "intIdPersona", referencedColumnName = "intIdPersona")
     private Long intIdPersona;

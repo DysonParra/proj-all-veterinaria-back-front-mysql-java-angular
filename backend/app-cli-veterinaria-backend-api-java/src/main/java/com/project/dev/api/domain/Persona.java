@@ -41,15 +41,10 @@ public class Persona implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private Long intIdPersona;
-    @Column(length = 200)
     private String strNombres;
-    @Column(length = 30)
     private String strCelular;
-    @Column(length = 100)
     private String strEmail;
-    @Column(length = 20)
     private String strUsuario;
-    @Column(length = 20)
     private String strClave;
 
 }

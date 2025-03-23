@@ -41,15 +41,10 @@ public class Mascota implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private Long intIdMascota;
-    @Column(length = 100)
     private String strNombre;
-    @Column(length = 3)
     private String strEdad;
-    @Column(length = 100)
     private String strUbicacion;
-    @Column(length = 2000)
     private String strRaza;
-    @Column(length = 100)
     private String strTipo;
     @JoinColumn(name = "intIdPersona", referencedColumnName = "intIdPersona")
     private Long intIdPersona;

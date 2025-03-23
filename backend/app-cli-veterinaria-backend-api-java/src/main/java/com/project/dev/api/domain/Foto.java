@@ -42,7 +42,6 @@ public class Foto implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private Long intIdFoto;
-    @Column(length = 8000)
     private String strImagen;
     @JoinColumn(name = "intIdMascota", referencedColumnName = "intIdMascota")
     private Long intIdMascota;
