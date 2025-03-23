@@ -49,7 +49,6 @@ public class Chat implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dtFecha;
     private Integer intEstado;
-    @JoinColumn(name = "intIdChatDetalle", referencedColumnName = "intIdChatDetalle")
     private Long intIdChatDetalle;
 
 }

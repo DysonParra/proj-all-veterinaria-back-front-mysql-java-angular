@@ -46,7 +46,6 @@ public class Mascota implements Serializable {
     private String strUbicacion;
     private String strRaza;
     private String strTipo;
-    @JoinColumn(name = "intIdPersona", referencedColumnName = "intIdPersona")
     private Long intIdPersona;
 
 }

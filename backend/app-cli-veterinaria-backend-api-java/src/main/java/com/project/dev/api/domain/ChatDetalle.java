@@ -45,7 +45,6 @@ public class ChatDetalle implements Serializable {
     private Date dtUltima;
     @Column(columnDefinition = "enum")
     private String enmEscribiendo;
-    @JoinColumn(name = "intIdPersona", referencedColumnName = "intIdPersona")
     private Long intIdPersona;
 
 }

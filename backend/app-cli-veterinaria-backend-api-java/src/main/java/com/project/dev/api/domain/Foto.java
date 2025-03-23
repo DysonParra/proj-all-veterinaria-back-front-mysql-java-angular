@@ -43,7 +43,6 @@ public class Foto implements Serializable {
     @Column(nullable = false)
     private Long intIdFoto;
     private String strImagen;
-    @JoinColumn(name = "intIdMascota", referencedColumnName = "intIdMascota")
     private Long intIdMascota;
 
 }
