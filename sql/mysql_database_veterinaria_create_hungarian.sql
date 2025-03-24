@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS `veterinaria`;
 CREATE DATABASE IF NOT EXISTS `veterinaria`;
 USE `veterinaria`;
 
-CREATE TABLE IF NOT EXISTS `Chat` (
+CREATE TABLE IF NOT EXISTS `chat` (
     `intIdChat`                         BIGINT              NOT NULL PRIMARY KEY,
     `intRemitente`                      INT                     NULL DEFAULT NULL,
     `intReceptor`                       INT                     NULL DEFAULT NULL,
@@ -12,20 +12,20 @@ CREATE TABLE IF NOT EXISTS `Chat` (
     `intIdChatDetalle`                  BIGINT                  NULL DEFAULT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `ChatDetalle` (
+CREATE TABLE IF NOT EXISTS `chat_detalle` (
     `intIdChatDetalle`                  BIGINT              NOT NULL PRIMARY KEY,
     `intIdPersona`                      BIGINT                  NULL DEFAULT NULL,
     `dtUltima`                          TIMESTAMP               NULL DEFAULT CURRENT_TIMESTAMP(),
     `enmEscribiendo`                    ENUM('no', 'si')        NULL DEFAULT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Foto` (
+CREATE TABLE IF NOT EXISTS `foto` (
     `intIdFoto`                         BIGINT              NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `intIdMascota`                      BIGINT                  NULL DEFAULT NULL,
     `strImagen`                         VARCHAR(8000)           NULL DEFAULT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Mascota` (
+CREATE TABLE IF NOT EXISTS `mascota` (
     `intIdMascota`                      BIGINT              NOT NULL PRIMARY KEY,
     `intIdPersona`                      BIGINT                  NULL DEFAULT NULL,
     `strNombre`                         VARCHAR(100)            NULL DEFAULT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `Mascota` (
     `strTipo`                           VARCHAR(100)            NULL DEFAULT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `Persona` (
+CREATE TABLE IF NOT EXISTS `persona` (
     `intIdPersona`                      BIGINT              NOT NULL PRIMARY KEY,
     `strNombres`                        VARCHAR(200)            NULL DEFAULT NULL,
     `strCelular`                        VARCHAR(30)             NULL DEFAULT NULL,
