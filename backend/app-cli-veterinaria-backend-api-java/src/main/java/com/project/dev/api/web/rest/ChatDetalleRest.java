@@ -88,7 +88,7 @@ public class ChatDetalleRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @GetMapping("/ChatDetalle")
+    @GetMapping("/chat-detalle")
     public CollectionModel<EntityModel<ChatDetalleDTO>> getAllEntities() {
         log.debug("REST request to get all entities type ChatDetalle");
         List<EntityModel<ChatDetalleDTO>> entities = null;
@@ -118,14 +118,14 @@ public class ChatDetalleRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @GetMapping("/ChatDetalle/pages")
+    @GetMapping("/chat-detalle/pages")
     public ResponseEntity<CollectionModel<EntityModel<ChatDetalleDTO>>> getAllEntitiesPaged(Pageable pageable) {
         log.debug("REST request to get a page of all entities type ChatDetalle");
         Page<ChatDetalleDTO> page = null;
         List<EntityModel<ChatDetalleDTO>> entities = null;
         try {
             page = entityService.getAllEntitiesPaged(pageable);
-            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/ChatDetalle/pages");
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/chat-detalle/pages");
             entities = page.getContent().parallelStream()
                     .map(entityRestAssembler::toModel)
                     .collect(Collectors.toList());
@@ -151,7 +151,7 @@ public class ChatDetalleRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @PostMapping("/ChatDetalle")
+    @PostMapping("/chat-detalle")
     public ResponseEntity<?> saveEntity(@RequestBody ChatDetalleDTO entityDTO) {
         log.debug("POST request to save a new entity type ChatDetalle");
         EntityModel<ChatDetalleDTO> resource = null;
@@ -180,7 +180,7 @@ public class ChatDetalleRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @PutMapping("/ChatDetalle/{id}")
+    @PutMapping("/chat-detalle/{id}")
     public ResponseEntity<?> updateEntity(@RequestBody ChatDetalleDTO entityDTO, @PathVariable String id) {
         return saveEntity(entityDTO);
     }
@@ -198,7 +198,7 @@ public class ChatDetalleRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @GetMapping("/ChatDetalle/{id}")
+    @GetMapping("/chat-detalle/{id}")
     public ResponseEntity<EntityModel<ChatDetalleDTO>> getEntity(@PathVariable String id) {
         log.debug(String.format("REST request to get the entity type ChatDetalle with id {} ", id));
         try {
@@ -224,7 +224,7 @@ public class ChatDetalleRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @DeleteMapping("/ChatDetalle/{id}")
+    @DeleteMapping("/chat-detalle/{id}")
     public ResponseEntity<?> deleteEntity(@PathVariable String id) {
         log.debug("DELETE request to delete the entity ChatDetalle with id : {}", id);
         try {
@@ -248,7 +248,7 @@ public class ChatDetalleRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @GetMapping("/ChatDetalle/search/{query}")
+    @GetMapping("/chat-detalle/search/{query}")
     public CollectionModel<EntityModel<ChatDetalleDTO>> searchEntities(@PathVariable String query) {
         log.debug("REST request to get the entities type ChatDetalle with the search : {} ", query);
         List<EntityModel<ChatDetalleDTO>> entities = null;
@@ -279,14 +279,14 @@ public class ChatDetalleRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @GetMapping("/ChatDetalle/search/{query}/pages")
+    @GetMapping("/chat-detalle/search/{query}/pages")
     public ResponseEntity<CollectionModel<EntityModel<ChatDetalleDTO>>> searchEntitiesPaged(@PathVariable String query, Pageable pageable) {
         log.debug("REST request to get a page of the entities type ChatDetalle with the search : {}", query);
         Page<ChatDetalleDTO> page = null;
         List<EntityModel<ChatDetalleDTO>> entities = null;
         try {
             page = entityService.searchEntitiesPaged(query, pageable);
-            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/ChatDetalle/search/{query}/pages/" + query);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/chat-detalle/search/{query}/pages/" + query);
             entities = page.getContent().parallelStream()
                     .map(entityRestAssembler::toModel)
                     .collect(Collectors.toList());

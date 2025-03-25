@@ -9,7 +9,7 @@
 			"name": "Peticiones",
 			"item": [
 				{
-					"name": "ChatDetalle",
+					"name": "chat",
 					"item": [
 						{
 							"name": "Obtener Todos los Registros (Resultado vacío)",
@@ -46,7 +46,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -54,7 +54,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}"
+										"{{folder_name}}"
 									]
 								}
 							},
@@ -90,739 +90,19 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"insertRequestBody = ",
-											"{",
-                                            "  \"intIdChatDetalle\" : \"{{id}}\",",
-                                            "  \"dtUltima\" : \"2020-03-07 05:23:10\",",
-                                            "  \"enmEscribiendo\" : null",
-                                            "  /*",
-                                            "  \"intIdPersona\" : -1",
-                                            "  */",
-                                            "}",
-											"pm.environment.set(\"insertRequestBody\", JSON.stringify(insertRequestBody));",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{{insertRequestBody}}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{host}}"
-									],
-									"port": "{{port}}",
-									"path": [
-										"{{api}}",
-										"{{FolderName}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Obtener Registro",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Body existe\", function () {",
-											"    pm.response.to.be.withBody; // body tiene que exitir",
-											"    pm.response.to.be.json;     // Que body sea un JSON válido",
-											"});",
-											"",
-											"pm.test(\"No ocurrió error.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.error).to.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Se obtuvieron enlaces.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._links).not.be.eql(undefined);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{id}}",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{host}}"
-									],
-									"port": "{{port}}",
-									"path": [
-										"{{api}}",
-										"{{FolderName}}",
-										"{{id}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Modificar Registro",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Body existe\", function () {",
-											"    pm.response.to.be.withBody; // body tiene que exitir",
-											"    pm.response.to.be.json;     // Que body sea un JSON válido",
-											"});",
-											"",
-											"pm.test(\"No ocurrió error.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.error).to.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Se obtuvieron enlaces.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._links).not.be.eql(undefined);",
-											"});",
-											""
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"updateRequestBody =",
-											"{",
-                                            "  \"intIdChatDetalle\" : \"{{id}}\",",
-                                            "  \"dtUltima\" : \"2021-01-02 01:24:45\",",
-                                            "  \"enmEscribiendo\" : \"no\"",
-                                            "  /*",
-                                            "  \"intIdPersona\" : 102",
-                                            "  */",
-                                            "}",
-											"pm.environment.set(\"updateRequestBody\", JSON.stringify(updateRequestBody));",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disabledSystemHeaders": {
-									"content-type": true
-								}
-							},
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{{updateRequestBody}}"
-								},
-								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{id}}",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{host}}"
-									],
-									"port": "{{port}}",
-									"path": [
-										"{{api}}",
-										"{{FolderName}}",
-										"{{id}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Obtener Todos los Registros",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Body existe\", function () {",
-											"    pm.response.to.be.withBody; // body tiene que exitir",
-											"    pm.response.to.be.json;     // Que body sea un JSON válido",
-											"});",
-											"",
-											"pm.test(\"No ocurrió error.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.error).to.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Se obtuvieron enlaces.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._links).not.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Lista no está vacía ('_embedded' not undefined).\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._embedded).not.be.to.eql(undefined);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{host}}"
-									],
-									"port": "{{port}}",
-									"path": [
-										"{{api}}",
-										"{{FolderName}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Obtener Todos los Registros Paginados",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Body existe\", function () {",
-											"    pm.response.to.be.withBody; // body tiene que exitir",
-											"    pm.response.to.be.json;     // Que body sea un JSON válido",
-											"});",
-											"",
-											"pm.test(\"No ocurrió error.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.error).to.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Se obtuvieron enlaces.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._links).not.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Lista no está vacía ('_embedded' not undefined).\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._embedded).not.be.to.eql(undefined);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{pages}}?page=0&size=1",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{host}}"
-									],
-									"port": "{{port}}",
-									"path": [
-										"{{api}}",
-										"{{FolderName}}",
-										"{{pages}}"
-									],
-									"query": [
-										{
-											"key": "page",
-											"value": "0"
-										},
-										{
-											"key": "size",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Buscar Registros (Resultado vacío)",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Body existe\", function () {",
-											"    pm.response.to.be.withBody; // body tiene que exitir",
-											"    pm.response.to.be.json;     // Que body sea un JSON válido",
-											"});",
-											"",
-											"pm.test(\"No ocurrió error.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.error).to.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Se obtuvieron enlaces.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._links).not.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Lista está vacía ('_embedded' undefined).\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._embedded).be.to.eql(undefined);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/9",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{host}}"
-									],
-									"port": "{{port}}",
-									"path": [
-										"{{api}}",
-										"{{FolderName}}",
-										"search",
-										"9"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Buscar Registros",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Body existe\", function () {",
-											"    pm.response.to.be.withBody; // body tiene que exitir",
-											"    pm.response.to.be.json;     // Que body sea un JSON válido",
-											"});",
-											"",
-											"pm.test(\"No ocurrió error.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.error).to.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Se obtuvieron enlaces.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._links).not.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Lista no está vacía ('_embedded' not undefined).\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._embedded).not.be.to.eql(undefined);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/0",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{host}}"
-									],
-									"port": "{{port}}",
-									"path": [
-										"{{api}}",
-										"{{FolderName}}",
-										"search",
-										"0"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Buscar Registros Paginados (Resultado vacío)",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Body existe\", function () {",
-											"    pm.response.to.be.withBody; // body tiene que exitir",
-											"    pm.response.to.be.json;     // Que body sea un JSON válido",
-											"});",
-											"",
-											"pm.test(\"No ocurrió error.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.error).to.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Se obtuvieron enlaces.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._links).not.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Lista está vacía ('_embedded' undefined).\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._embedded).be.to.eql(undefined);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/9/{{pages}}?page=0&size=1",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{host}}"
-									],
-									"port": "{{port}}",
-									"path": [
-										"{{api}}",
-										"{{FolderName}}",
-										"search",
-										"9",
-										"{{pages}}"
-									],
-									"query": [
-										{
-											"key": "page",
-											"value": "0"
-										},
-										{
-											"key": "size",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Buscar Registros Paginados",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Body existe\", function () {",
-											"    pm.response.to.be.withBody; // body tiene que exitir",
-											"    pm.response.to.be.json;     // Que body sea un JSON válido",
-											"});",
-											"",
-											"pm.test(\"No ocurrió error.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.error).to.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Se obtuvieron enlaces.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._links).not.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Lista no está vacía ('_embedded' not undefined).\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._embedded).not.be.to.eql(undefined);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/0/{{pages}}?page=0&size=1",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{host}}"
-									],
-									"port": "{{port}}",
-									"path": [
-										"{{api}}",
-										"{{FolderName}}",
-										"search",
-										"0",
-										"{{pages}}"
-									],
-									"query": [
-										{
-											"key": "page",
-											"value": "0"
-										},
-										{
-											"key": "size",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Eliminar Registro",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Se obtuvo respuesta del servidor\", function () {",
-											"  pm.response.to.have.status(204);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{id}}",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{host}}"
-									],
-									"port": "{{port}}",
-									"path": [
-										"{{api}}",
-										"{{FolderName}}",
-										"{{id}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Obtener Todos los Registros Paginados (Resultado vacío)",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Body existe\", function () {",
-											"    pm.response.to.be.withBody; // body tiene que exitir",
-											"    pm.response.to.be.json;     // Que body sea un JSON válido",
-											"});",
-											"",
-											"pm.test(\"No ocurrió error.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.error).to.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Se obtuvieron enlaces.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._links).not.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Lista está vacía ('_embedded' undefined).\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._embedded).be.to.eql(undefined);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{pages}}?page=0&size=1",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{host}}"
-									],
-									"port": "{{port}}",
-									"path": [
-										"{{api}}",
-										"{{FolderName}}",
-										"{{pages}}"
-									],
-									"query": [
-										{
-											"key": "page",
-											"value": "0"
-										},
-										{
-											"key": "size",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"pm.globals.set('FolderName', 'ChatDetalle');",
-									"pm.globals.set('id', '101');"
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
-				}
-,
-				{
-					"name": "Chat",
-					"item": [
-						{
-							"name": "Obtener Todos los Registros (Resultado vacío)",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Body existe\", function () {",
-											"    pm.response.to.be.withBody; // body tiene que exitir",
-											"    pm.response.to.be.json;     // Que body sea un JSON válido",
-											"});",
-											"",
-											"pm.test(\"No ocurrió error.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.error).to.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Se obtuvieron enlaces.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._links).not.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Lista está vacía ('_embedded' undefined).\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._embedded).be.to.eql(undefined);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}",
-									"protocol": "{{protocol}}",
-									"host": [
-										"{{host}}"
-									],
-									"port": "{{port}}",
-									"path": [
-										"{{api}}",
-										"{{FolderName}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Insertar Registro",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Body existe\", function () {",
-											"    pm.response.to.be.withBody; // body tiene que exitir",
-											"    pm.response.to.be.json;     // Que body sea un JSON válido",
-											"});",
-											"",
-											"pm.test(\"No ocurrió error.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.error).to.be.eql(undefined);",
-											"});",
-											"",
-											"pm.test(\"Se obtuvieron enlaces.\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData._links).not.be.eql(undefined);",
-											"});",
-											""
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"insertRequestBody = ",
+											"insert_request_body = ",
 											"{",
                                             "  \"intIdChat\" : \"{{id}}\",",
                                             "  \"intRemitente\" : -1,",
                                             "  \"intReceptor\" : -1,",
                                             "  \"txtMensaje\" : \"\",",
                                             "  \"dtFecha\" : \"2020-03-07 05:23:10\",",
-                                            "  \"intEstado\" : -1",
-                                            "  /*",
+                                            "  \"intEstado\" : -1,",
                                             "  \"intIdChatDetalle\" : \"{{id}}\"",
+                                            "  /*",
                                             "  */",
                                             "}",
-											"pm.environment.set(\"insertRequestBody\", JSON.stringify(insertRequestBody));",
+											"pm.environment.set(\"insert_request_body\", JSON.stringify(insert_request_body));",
 											""
 										],
 										"type": "text/javascript"
@@ -840,7 +120,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{{insertRequestBody}}",
+									"raw": "{{insert_request_body}}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -848,7 +128,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -856,7 +136,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}"
+										"{{folder_name}}"
 									]
 								}
 							},
@@ -901,7 +181,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{id}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{id}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -909,7 +189,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{id}}"
 									]
 								}
@@ -946,19 +226,19 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"updateRequestBody =",
+											"update_request_body =",
 											"{",
                                             "  \"intIdChat\" : \"{{id}}\",",
                                             "  \"intRemitente\" : 102,",
                                             "  \"intReceptor\" : 102,",
                                             "  \"txtMensaje\" : \"S12\",",
                                             "  \"dtFecha\" : \"2021-01-02 01:24:45\",",
-                                            "  \"intEstado\" : 102",
-                                            "  /*",
+                                            "  \"intEstado\" : 102,",
                                             "  \"intIdChatDetalle\" : \"{{id}}\"",
+                                            "  /*",
                                             "  */",
                                             "}",
-											"pm.environment.set(\"updateRequestBody\", JSON.stringify(updateRequestBody));",
+											"pm.environment.set(\"update_request_body\", JSON.stringify(update_request_body));",
 											""
 										],
 										"type": "text/javascript"
@@ -981,10 +261,10 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{{updateRequestBody}}"
+									"raw": "{{update_request_body}}"
 								},
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{id}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{id}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -992,7 +272,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{id}}"
 									]
 								}
@@ -1034,7 +314,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1042,7 +322,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}"
+										"{{folder_name}}"
 									]
 								}
 							},
@@ -1083,7 +363,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1091,7 +371,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{pages}}"
 									],
 									"query": [
@@ -1143,7 +423,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/9",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/9",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1151,7 +431,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"9"
 									]
@@ -1194,7 +474,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/0",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/0",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1202,7 +482,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"0"
 									]
@@ -1245,7 +525,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/9/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/9/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1253,7 +533,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"9",
 										"{{pages}}"
@@ -1307,7 +587,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/0/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/0/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1315,7 +595,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"0",
 										"{{pages}}"
@@ -1353,7 +633,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{id}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{id}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1361,7 +641,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{id}}"
 									]
 								}
@@ -1403,7 +683,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1411,7 +691,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{pages}}"
 									],
 									"query": [
@@ -1435,7 +715,7 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"pm.globals.set('FolderName', 'Chat');",
+									"pm.globals.set('folder_name', 'chat');",
 									"pm.globals.set('id', '101');"
 								]
 							}
@@ -1455,7 +735,7 @@
 				}
 ,
 				{
-					"name": "Foto",
+					"name": "chat-detalle",
 					"item": [
 						{
 							"name": "Obtener Todos los Registros (Resultado vacío)",
@@ -1492,7 +772,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1500,7 +780,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}"
+										"{{folder_name}}"
 									]
 								}
 							},
@@ -1536,15 +816,16 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"insertRequestBody = ",
+											"insert_request_body = ",
 											"{",
-                                            "  \"intIdFoto\" : \"{{id}}\",",
-                                            "  \"strImagen\" : \"\"",
+                                            "  \"intIdChatDetalle\" : \"{{id}}\",",
+                                            "  \"intIdPersona\" : -1,",
+                                            "  \"dtUltima\" : \"2020-03-07 05:23:10\",",
+                                            "  \"enmEscribiendo\" : null",
                                             "  /*",
-                                            "  \"intIdMascota\" : -1",
                                             "  */",
                                             "}",
-											"pm.environment.set(\"insertRequestBody\", JSON.stringify(insertRequestBody));",
+											"pm.environment.set(\"insert_request_body\", JSON.stringify(insert_request_body));",
 											""
 										],
 										"type": "text/javascript"
@@ -1562,7 +843,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{{insertRequestBody}}",
+									"raw": "{{insert_request_body}}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1570,7 +851,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1578,7 +859,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}"
+										"{{folder_name}}"
 									]
 								}
 							},
@@ -1623,7 +904,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{id}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{id}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1631,7 +912,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{id}}"
 									]
 								}
@@ -1668,15 +949,16 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"updateRequestBody =",
+											"update_request_body =",
 											"{",
-                                            "  \"intIdFoto\" : \"{{id}}\",",
-                                            "  \"strImagen\" : \"S12\"",
+                                            "  \"intIdChatDetalle\" : \"{{id}}\",",
+                                            "  \"intIdPersona\" : 102,",
+                                            "  \"dtUltima\" : \"2021-01-02 01:24:45\",",
+                                            "  \"enmEscribiendo\" : null",
                                             "  /*",
-                                            "  \"intIdMascota\" : 102",
                                             "  */",
                                             "}",
-											"pm.environment.set(\"updateRequestBody\", JSON.stringify(updateRequestBody));",
+											"pm.environment.set(\"update_request_body\", JSON.stringify(update_request_body));",
 											""
 										],
 										"type": "text/javascript"
@@ -1699,10 +981,10 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{{updateRequestBody}}"
+									"raw": "{{update_request_body}}"
 								},
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{id}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{id}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1710,7 +992,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{id}}"
 									]
 								}
@@ -1752,7 +1034,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1760,7 +1042,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}"
+										"{{folder_name}}"
 									]
 								}
 							},
@@ -1801,7 +1083,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1809,7 +1091,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{pages}}"
 									],
 									"query": [
@@ -1861,7 +1143,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/9",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/9",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1869,7 +1151,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"9"
 									]
@@ -1912,7 +1194,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/0",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/0",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1920,7 +1202,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"0"
 									]
@@ -1963,7 +1245,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/9/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/9/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -1971,7 +1253,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"9",
 										"{{pages}}"
@@ -2025,7 +1307,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/0/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/0/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2033,7 +1315,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"0",
 										"{{pages}}"
@@ -2071,7 +1353,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{id}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{id}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2079,7 +1361,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{id}}"
 									]
 								}
@@ -2121,7 +1403,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2129,7 +1411,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{pages}}"
 									],
 									"query": [
@@ -2153,7 +1435,7 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"pm.globals.set('FolderName', 'Foto');",
+									"pm.globals.set('folder_name', 'chat-detalle');",
 									"pm.globals.set('id', '101');"
 								]
 							}
@@ -2173,7 +1455,7 @@
 				}
 ,
 				{
-					"name": "Mascota",
+					"name": "foto",
 					"item": [
 						{
 							"name": "Obtener Todos los Registros (Resultado vacío)",
@@ -2210,7 +1492,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2218,7 +1500,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}"
+										"{{folder_name}}"
 									]
 								}
 							},
@@ -2254,19 +1536,737 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"insertRequestBody = ",
+											"insert_request_body = ",
+											"{",
+                                            "  \"intIdFoto\" : \"{{id}}\",",
+                                            "  \"intIdMascota\" : -1,",
+                                            "  \"strImagen\" : \"\"",
+                                            "  /*",
+                                            "  */",
+                                            "}",
+											"pm.environment.set(\"insert_request_body\", JSON.stringify(insert_request_body));",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{insert_request_body}}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"{{api}}",
+										"{{folder_name}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Registro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body existe\", function () {",
+											"    pm.response.to.be.withBody; // body tiene que exitir",
+											"    pm.response.to.be.json;     // Que body sea un JSON válido",
+											"});",
+											"",
+											"pm.test(\"No ocurrió error.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.error).to.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Se obtuvieron enlaces.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._links).not.be.eql(undefined);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{id}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"{{api}}",
+										"{{folder_name}}",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modificar Registro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body existe\", function () {",
+											"    pm.response.to.be.withBody; // body tiene que exitir",
+											"    pm.response.to.be.json;     // Que body sea un JSON válido",
+											"});",
+											"",
+											"pm.test(\"No ocurrió error.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.error).to.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Se obtuvieron enlaces.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._links).not.be.eql(undefined);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"update_request_body =",
+											"{",
+                                            "  \"intIdFoto\" : \"{{id}}\",",
+                                            "  \"intIdMascota\" : 102,",
+                                            "  \"strImagen\" : \"S12\"",
+                                            "  /*",
+                                            "  */",
+                                            "}",
+											"pm.environment.set(\"update_request_body\", JSON.stringify(update_request_body));",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"content-type": true
+								}
+							},
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{update_request_body}}"
+								},
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{id}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"{{api}}",
+										"{{folder_name}}",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Todos los Registros",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body existe\", function () {",
+											"    pm.response.to.be.withBody; // body tiene que exitir",
+											"    pm.response.to.be.json;     // Que body sea un JSON válido",
+											"});",
+											"",
+											"pm.test(\"No ocurrió error.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.error).to.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Se obtuvieron enlaces.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._links).not.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Lista no está vacía ('_embedded' not undefined).\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._embedded).not.be.to.eql(undefined);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"{{api}}",
+										"{{folder_name}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Todos los Registros Paginados",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body existe\", function () {",
+											"    pm.response.to.be.withBody; // body tiene que exitir",
+											"    pm.response.to.be.json;     // Que body sea un JSON válido",
+											"});",
+											"",
+											"pm.test(\"No ocurrió error.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.error).to.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Se obtuvieron enlaces.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._links).not.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Lista no está vacía ('_embedded' not undefined).\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._embedded).not.be.to.eql(undefined);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{pages}}?page=0&size=1",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"{{api}}",
+										"{{folder_name}}",
+										"{{pages}}"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar Registros (Resultado vacío)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body existe\", function () {",
+											"    pm.response.to.be.withBody; // body tiene que exitir",
+											"    pm.response.to.be.json;     // Que body sea un JSON válido",
+											"});",
+											"",
+											"pm.test(\"No ocurrió error.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.error).to.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Se obtuvieron enlaces.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._links).not.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Lista está vacía ('_embedded' undefined).\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._embedded).be.to.eql(undefined);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/9",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"{{api}}",
+										"{{folder_name}}",
+										"search",
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar Registros",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body existe\", function () {",
+											"    pm.response.to.be.withBody; // body tiene que exitir",
+											"    pm.response.to.be.json;     // Que body sea un JSON válido",
+											"});",
+											"",
+											"pm.test(\"No ocurrió error.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.error).to.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Se obtuvieron enlaces.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._links).not.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Lista no está vacía ('_embedded' not undefined).\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._embedded).not.be.to.eql(undefined);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/0",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"{{api}}",
+										"{{folder_name}}",
+										"search",
+										"0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar Registros Paginados (Resultado vacío)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body existe\", function () {",
+											"    pm.response.to.be.withBody; // body tiene que exitir",
+											"    pm.response.to.be.json;     // Que body sea un JSON válido",
+											"});",
+											"",
+											"pm.test(\"No ocurrió error.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.error).to.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Se obtuvieron enlaces.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._links).not.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Lista está vacía ('_embedded' undefined).\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._embedded).be.to.eql(undefined);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/9/{{pages}}?page=0&size=1",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"{{api}}",
+										"{{folder_name}}",
+										"search",
+										"9",
+										"{{pages}}"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar Registros Paginados",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body existe\", function () {",
+											"    pm.response.to.be.withBody; // body tiene que exitir",
+											"    pm.response.to.be.json;     // Que body sea un JSON válido",
+											"});",
+											"",
+											"pm.test(\"No ocurrió error.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.error).to.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Se obtuvieron enlaces.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._links).not.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Lista no está vacía ('_embedded' not undefined).\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._embedded).not.be.to.eql(undefined);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/0/{{pages}}?page=0&size=1",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"{{api}}",
+										"{{folder_name}}",
+										"search",
+										"0",
+										"{{pages}}"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar Registro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Se obtuvo respuesta del servidor\", function () {",
+											"  pm.response.to.have.status(204);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{id}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"{{api}}",
+										"{{folder_name}}",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Todos los Registros Paginados (Resultado vacío)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body existe\", function () {",
+											"    pm.response.to.be.withBody; // body tiene que exitir",
+											"    pm.response.to.be.json;     // Que body sea un JSON válido",
+											"});",
+											"",
+											"pm.test(\"No ocurrió error.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.error).to.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Se obtuvieron enlaces.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._links).not.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Lista está vacía ('_embedded' undefined).\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._embedded).be.to.eql(undefined);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{pages}}?page=0&size=1",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"{{api}}",
+										"{{folder_name}}",
+										"{{pages}}"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.globals.set('folder_name', 'foto');",
+									"pm.globals.set('id', '101');"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+,
+				{
+					"name": "mascota",
+					"item": [
+						{
+							"name": "Obtener Todos los Registros (Resultado vacío)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body existe\", function () {",
+											"    pm.response.to.be.withBody; // body tiene que exitir",
+											"    pm.response.to.be.json;     // Que body sea un JSON válido",
+											"});",
+											"",
+											"pm.test(\"No ocurrió error.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.error).to.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Se obtuvieron enlaces.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._links).not.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Lista está vacía ('_embedded' undefined).\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._embedded).be.to.eql(undefined);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"{{api}}",
+										"{{folder_name}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Insertar Registro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Body existe\", function () {",
+											"    pm.response.to.be.withBody; // body tiene que exitir",
+											"    pm.response.to.be.json;     // Que body sea un JSON válido",
+											"});",
+											"",
+											"pm.test(\"No ocurrió error.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.error).to.be.eql(undefined);",
+											"});",
+											"",
+											"pm.test(\"Se obtuvieron enlaces.\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData._links).not.be.eql(undefined);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"insert_request_body = ",
 											"{",
                                             "  \"intIdMascota\" : \"{{id}}\",",
+                                            "  \"intIdPersona\" : -1,",
                                             "  \"strNombre\" : \"\",",
                                             "  \"strEdad\" : \"\",",
                                             "  \"strUbicacion\" : \"\",",
                                             "  \"strRaza\" : \"\",",
                                             "  \"strTipo\" : \"\"",
                                             "  /*",
-                                            "  \"intIdPersona\" : -1",
                                             "  */",
                                             "}",
-											"pm.environment.set(\"insertRequestBody\", JSON.stringify(insertRequestBody));",
+											"pm.environment.set(\"insert_request_body\", JSON.stringify(insert_request_body));",
 											""
 										],
 										"type": "text/javascript"
@@ -2284,7 +2284,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{{insertRequestBody}}",
+									"raw": "{{insert_request_body}}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2292,7 +2292,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2300,7 +2300,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}"
+										"{{folder_name}}"
 									]
 								}
 							},
@@ -2345,7 +2345,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{id}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{id}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2353,7 +2353,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{id}}"
 									]
 								}
@@ -2390,19 +2390,19 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"updateRequestBody =",
+											"update_request_body =",
 											"{",
                                             "  \"intIdMascota\" : \"{{id}}\",",
+                                            "  \"intIdPersona\" : 102,",
                                             "  \"strNombre\" : \"S12\",",
                                             "  \"strEdad\" : \"S12\",",
                                             "  \"strUbicacion\" : \"S12\",",
                                             "  \"strRaza\" : \"S12\",",
                                             "  \"strTipo\" : \"S12\"",
                                             "  /*",
-                                            "  \"intIdPersona\" : 102",
                                             "  */",
                                             "}",
-											"pm.environment.set(\"updateRequestBody\", JSON.stringify(updateRequestBody));",
+											"pm.environment.set(\"update_request_body\", JSON.stringify(update_request_body));",
 											""
 										],
 										"type": "text/javascript"
@@ -2425,10 +2425,10 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{{updateRequestBody}}"
+									"raw": "{{update_request_body}}"
 								},
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{id}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{id}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2436,7 +2436,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{id}}"
 									]
 								}
@@ -2478,7 +2478,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2486,7 +2486,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}"
+										"{{folder_name}}"
 									]
 								}
 							},
@@ -2527,7 +2527,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2535,7 +2535,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{pages}}"
 									],
 									"query": [
@@ -2587,7 +2587,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/9",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/9",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2595,7 +2595,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"9"
 									]
@@ -2638,7 +2638,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/0",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/0",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2646,7 +2646,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"0"
 									]
@@ -2689,7 +2689,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/9/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/9/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2697,7 +2697,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"9",
 										"{{pages}}"
@@ -2751,7 +2751,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/0/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/0/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2759,7 +2759,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"0",
 										"{{pages}}"
@@ -2797,7 +2797,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{id}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{id}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2805,7 +2805,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{id}}"
 									]
 								}
@@ -2847,7 +2847,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2855,7 +2855,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{pages}}"
 									],
 									"query": [
@@ -2879,7 +2879,7 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"pm.globals.set('FolderName', 'Mascota');",
+									"pm.globals.set('folder_name', 'mascota');",
 									"pm.globals.set('id', '101');"
 								]
 							}
@@ -2899,7 +2899,7 @@
 				}
 ,
 				{
-					"name": "Persona",
+					"name": "persona",
 					"item": [
 						{
 							"name": "Obtener Todos los Registros (Resultado vacío)",
@@ -2936,7 +2936,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -2944,7 +2944,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}"
+										"{{folder_name}}"
 									]
 								}
 							},
@@ -2980,7 +2980,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"insertRequestBody = ",
+											"insert_request_body = ",
 											"{",
                                             "  \"intIdPersona\" : \"{{id}}\",",
                                             "  \"strNombres\" : \"\",",
@@ -2989,10 +2989,9 @@
                                             "  \"strUsuario\" : \"\",",
                                             "  \"strClave\" : \"\"",
                                             "  /*",
-                                            "  ",
                                             "  */",
                                             "}",
-											"pm.environment.set(\"insertRequestBody\", JSON.stringify(insertRequestBody));",
+											"pm.environment.set(\"insert_request_body\", JSON.stringify(insert_request_body));",
 											""
 										],
 										"type": "text/javascript"
@@ -3010,7 +3009,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{{insertRequestBody}}",
+									"raw": "{{insert_request_body}}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3018,7 +3017,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -3026,7 +3025,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}"
+										"{{folder_name}}"
 									]
 								}
 							},
@@ -3071,7 +3070,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{id}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{id}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -3079,7 +3078,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{id}}"
 									]
 								}
@@ -3116,7 +3115,7 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											"updateRequestBody =",
+											"update_request_body =",
 											"{",
                                             "  \"intIdPersona\" : \"{{id}}\",",
                                             "  \"strNombres\" : \"S12\",",
@@ -3125,10 +3124,9 @@
                                             "  \"strUsuario\" : \"S12\",",
                                             "  \"strClave\" : \"S12\"",
                                             "  /*",
-                                            "  ",
                                             "  */",
                                             "}",
-											"pm.environment.set(\"updateRequestBody\", JSON.stringify(updateRequestBody));",
+											"pm.environment.set(\"update_request_body\", JSON.stringify(update_request_body));",
 											""
 										],
 										"type": "text/javascript"
@@ -3151,10 +3149,10 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{{updateRequestBody}}"
+									"raw": "{{update_request_body}}"
 								},
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{id}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{id}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -3162,7 +3160,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{id}}"
 									]
 								}
@@ -3204,7 +3202,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -3212,7 +3210,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}"
+										"{{folder_name}}"
 									]
 								}
 							},
@@ -3253,7 +3251,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -3261,7 +3259,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{pages}}"
 									],
 									"query": [
@@ -3313,7 +3311,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/9",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/9",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -3321,7 +3319,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"9"
 									]
@@ -3364,7 +3362,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/0",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/0",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -3372,7 +3370,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"0"
 									]
@@ -3415,7 +3413,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/9/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/9/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -3423,7 +3421,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"9",
 										"{{pages}}"
@@ -3477,7 +3475,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/search/0/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/search/0/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -3485,7 +3483,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"search",
 										"0",
 										"{{pages}}"
@@ -3523,7 +3521,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{id}}",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{id}}",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -3531,7 +3529,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{id}}"
 									]
 								}
@@ -3573,7 +3571,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{FolderName}}/{{pages}}?page=0&size=1",
+									"raw": "{{protocol}}://{{host}}:{{port}}/{{api}}/{{folder_name}}/{{pages}}?page=0&size=1",
 									"protocol": "{{protocol}}",
 									"host": [
 										"{{host}}"
@@ -3581,7 +3579,7 @@
 									"port": "{{port}}",
 									"path": [
 										"{{api}}",
-										"{{FolderName}}",
+										"{{folder_name}}",
 										"{{pages}}"
 									],
 									"query": [
@@ -3605,7 +3603,7 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"pm.globals.set('FolderName', 'Persona');",
+									"pm.globals.set('folder_name', 'persona');",
 									"pm.globals.set('id', '101');"
 								]
 							}
@@ -3632,7 +3630,7 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					"pm.globals.set('primaryKey', 101);"
+					"pm.globals.set('%domEntityKey%', 101);"
 				]
 			}
 		},

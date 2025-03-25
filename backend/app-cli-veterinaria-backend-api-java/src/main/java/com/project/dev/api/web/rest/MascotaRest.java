@@ -88,7 +88,7 @@ public class MascotaRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @GetMapping("/Mascota")
+    @GetMapping("/mascota")
     public CollectionModel<EntityModel<MascotaDTO>> getAllEntities() {
         log.debug("REST request to get all entities type Mascota");
         List<EntityModel<MascotaDTO>> entities = null;
@@ -118,14 +118,14 @@ public class MascotaRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @GetMapping("/Mascota/pages")
+    @GetMapping("/mascota/pages")
     public ResponseEntity<CollectionModel<EntityModel<MascotaDTO>>> getAllEntitiesPaged(Pageable pageable) {
         log.debug("REST request to get a page of all entities type Mascota");
         Page<MascotaDTO> page = null;
         List<EntityModel<MascotaDTO>> entities = null;
         try {
             page = entityService.getAllEntitiesPaged(pageable);
-            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/Mascota/pages");
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/mascota/pages");
             entities = page.getContent().parallelStream()
                     .map(entityRestAssembler::toModel)
                     .collect(Collectors.toList());
@@ -151,7 +151,7 @@ public class MascotaRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @PostMapping("/Mascota")
+    @PostMapping("/mascota")
     public ResponseEntity<?> saveEntity(@RequestBody MascotaDTO entityDTO) {
         log.debug("POST request to save a new entity type Mascota");
         EntityModel<MascotaDTO> resource = null;
@@ -180,7 +180,7 @@ public class MascotaRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @PutMapping("/Mascota/{id}")
+    @PutMapping("/mascota/{id}")
     public ResponseEntity<?> updateEntity(@RequestBody MascotaDTO entityDTO, @PathVariable String id) {
         return saveEntity(entityDTO);
     }
@@ -198,7 +198,7 @@ public class MascotaRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @GetMapping("/Mascota/{id}")
+    @GetMapping("/mascota/{id}")
     public ResponseEntity<EntityModel<MascotaDTO>> getEntity(@PathVariable String id) {
         log.debug(String.format("REST request to get the entity type Mascota with id {} ", id));
         try {
@@ -224,7 +224,7 @@ public class MascotaRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @DeleteMapping("/Mascota/{id}")
+    @DeleteMapping("/mascota/{id}")
     public ResponseEntity<?> deleteEntity(@PathVariable String id) {
         log.debug("DELETE request to delete the entity Mascota with id : {}", id);
         try {
@@ -248,7 +248,7 @@ public class MascotaRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @GetMapping("/Mascota/search/{query}")
+    @GetMapping("/mascota/search/{query}")
     public CollectionModel<EntityModel<MascotaDTO>> searchEntities(@PathVariable String query) {
         log.debug("REST request to get the entities type Mascota with the search : {} ", query);
         List<EntityModel<MascotaDTO>> entities = null;
@@ -279,14 +279,14 @@ public class MascotaRest {
         @ApiResponse(code = 403, message = "Prohibido acceder al recurso que intenta alcanzar"),
         @ApiResponse(code = 404, message = "No se encuentra el recurso que intentabas alcanzar")
     })
-    @GetMapping("/Mascota/search/{query}/pages")
+    @GetMapping("/mascota/search/{query}/pages")
     public ResponseEntity<CollectionModel<EntityModel<MascotaDTO>>> searchEntitiesPaged(@PathVariable String query, Pageable pageable) {
         log.debug("REST request to get a page of the entities type Mascota with the search : {}", query);
         Page<MascotaDTO> page = null;
         List<EntityModel<MascotaDTO>> entities = null;
         try {
             page = entityService.searchEntitiesPaged(query, pageable);
-            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/Mascota/search/{query}/pages/" + query);
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/mascota/search/{query}/pages/" + query);
             entities = page.getContent().parallelStream()
                     .map(entityRestAssembler::toModel)
                     .collect(Collectors.toList());
