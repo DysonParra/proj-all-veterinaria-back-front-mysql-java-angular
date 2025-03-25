@@ -42,10 +42,10 @@ public class ChatDetalle implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private Long intIdChatDetalle;
+    private Long intIdPersona;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dtUltima;
-    @Column(columnDefinition = "enum")
+    @Column(columnDefinition = "ENUM")
     private String enmEscribiendo;
-    private Long intIdPersona;
 
 }

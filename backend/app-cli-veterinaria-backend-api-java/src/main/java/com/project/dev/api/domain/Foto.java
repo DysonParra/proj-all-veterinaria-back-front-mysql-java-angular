@@ -42,7 +42,7 @@ public class Foto implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private Long intIdFoto;
-    private String strImagen;
     private Long intIdMascota;
+    private String strImagen;
 
 }

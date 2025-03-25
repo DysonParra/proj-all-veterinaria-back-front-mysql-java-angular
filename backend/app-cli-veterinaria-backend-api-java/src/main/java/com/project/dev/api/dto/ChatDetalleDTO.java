@@ -35,8 +35,8 @@ import lombok.NoArgsConstructor;
 public class ChatDetalleDTO {
 
     private Long intIdChatDetalle;
+    private Long intIdPersona;
     private Date dtUltima;
     private String enmEscribiendo;
-    private Long intIdPersona;
 
 }

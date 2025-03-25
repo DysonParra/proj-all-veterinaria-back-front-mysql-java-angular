@@ -42,11 +42,11 @@ public class Mascota implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private Long intIdMascota;
+    private Long intIdPersona;
     private String strNombre;
     private String strEdad;
     private String strUbicacion;
     private String strRaza;
     private String strTipo;
-    private Long intIdPersona;
 
 }

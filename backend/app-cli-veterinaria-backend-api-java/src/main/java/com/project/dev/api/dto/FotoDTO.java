@@ -35,7 +35,7 @@ import lombok.NoArgsConstructor;
 public class FotoDTO {
 
     private Long intIdFoto;
-    private String strImagen;
     private Long intIdMascota;
+    private String strImagen;
 
 }
