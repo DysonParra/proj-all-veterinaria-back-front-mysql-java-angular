@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {FotoService}
+ * @overview        {FotoService}
  *
  * @version         2.0
  *

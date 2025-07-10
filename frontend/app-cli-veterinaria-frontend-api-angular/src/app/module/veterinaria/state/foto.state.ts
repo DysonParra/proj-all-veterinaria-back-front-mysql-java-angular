@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {FotoState}
+ * @overview        {FotoState}
  *
  * @version         2.0
  *

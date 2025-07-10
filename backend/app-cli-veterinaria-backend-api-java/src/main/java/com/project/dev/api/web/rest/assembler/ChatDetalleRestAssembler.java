@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {ChatDetalleRestAssembler}
+ * @overview        {ChatDetalleRestAssembler}
  *
  * @version         2.0
  *

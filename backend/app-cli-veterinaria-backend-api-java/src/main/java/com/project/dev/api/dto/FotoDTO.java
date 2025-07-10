@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {FotoDTO}
+ * @overview        {FotoDTO}
  *
  * @version         2.0
  *

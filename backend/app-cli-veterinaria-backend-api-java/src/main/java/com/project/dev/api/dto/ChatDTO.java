@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {ChatDTO}
+ * @overview        {ChatDTO}
  *
  * @version         2.0
  *

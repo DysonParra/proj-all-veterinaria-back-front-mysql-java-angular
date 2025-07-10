@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {MascotaContainerComponent}
+ * @overview        {MascotaContainerComponent}
  *
  * @version         2.0
  *

@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {MascotaState}
+ * @overview        {MascotaState}
  *
  * @version         2.0
  *

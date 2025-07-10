@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {FotoViewComponent}
+ * @overview        {FotoViewComponent}
  *
  * @version         2.0
  *

@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {FotoFacade}
+ * @overview        {FotoFacade}
  *
  * @version         2.0
  *

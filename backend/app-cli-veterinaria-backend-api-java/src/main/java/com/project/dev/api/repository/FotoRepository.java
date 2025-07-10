@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {FotoRepository}
+ * @overview        {FotoRepository}
  *
  * @version         2.0
  *

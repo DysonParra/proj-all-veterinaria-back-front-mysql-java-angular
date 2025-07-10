@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {MascotaFacade}
+ * @overview        {MascotaFacade}
  *
  * @version         2.0
  *

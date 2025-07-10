@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {FotoViewModel}
+ * @overview        {FotoViewModel}
  *
  * @version         2.0
  *

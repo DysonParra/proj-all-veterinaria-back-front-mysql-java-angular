@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {FotoContainerComponent}
+ * @overview        {FotoContainerComponent}
  *
  * @version         2.0
  *

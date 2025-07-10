@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {ChatDetalleViewComponent}
+ * @overview        {ChatDetalleViewComponent}
  *
  * @version         2.0
  *

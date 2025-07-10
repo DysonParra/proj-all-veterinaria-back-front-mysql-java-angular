@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {MascotaDTO}
+ * @overview        {MascotaDTO}
  *
  * @version         2.0
  *

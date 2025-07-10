@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {MascotaViewModel}
+ * @overview        {MascotaViewModel}
  *
  * @version         2.0
  *

@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {VeterinariaModule}
+ * @overview        {VeterinariaModule}
  *
  * @version         2.0
  *
@@ -46,22 +46,26 @@ import { ChatService } from './service/chat.service';
 import { ChatComponent } from './component/chat/chat.component';
 import { ChatContainerComponent } from './container/chat-container/chat-container.component';
 import { ChatViewComponent } from './view/chat-view/chat-view.component';
-import { ChatDetalleFacade } from './facade/chat-detalle.facade';
+
+import { ChatDetalleFacade } from './facade/chat-detalle.facade';
 import { ChatDetalleService } from './service/chat-detalle.service';
 import { ChatDetalleComponent } from './component/chat-detalle/chat-detalle.component';
 import { ChatDetalleContainerComponent } from './container/chat-detalle-container/chat-detalle-container.component';
 import { ChatDetalleViewComponent } from './view/chat-detalle-view/chat-detalle-view.component';
-import { FotoFacade } from './facade/foto.facade';
+
+import { FotoFacade } from './facade/foto.facade';
 import { FotoService } from './service/foto.service';
 import { FotoComponent } from './component/foto/foto.component';
 import { FotoContainerComponent } from './container/foto-container/foto-container.component';
 import { FotoViewComponent } from './view/foto-view/foto-view.component';
-import { MascotaFacade } from './facade/mascota.facade';
+
+import { MascotaFacade } from './facade/mascota.facade';
 import { MascotaService } from './service/mascota.service';
 import { MascotaComponent } from './component/mascota/mascota.component';
 import { MascotaContainerComponent } from './container/mascota-container/mascota-container.component';
 import { MascotaViewComponent } from './view/mascota-view/mascota-view.component';
-import { PersonaFacade } from './facade/persona.facade';
+
+import { PersonaFacade } from './facade/persona.facade';
 import { PersonaService } from './service/persona.service';
 import { PersonaComponent } from './component/persona/persona.component';
 import { PersonaContainerComponent } from './container/persona-container/persona-container.component';
@@ -80,13 +84,17 @@ import { VeterinariaRoutingModule } from '@app/module/veterinaria/veterinaria.ro
     declarations: [
         ChatComponent,
         ChatContainerComponent,
-        ChatViewComponent,        ChatDetalleComponent,
+        ChatViewComponent,
+        ChatDetalleComponent,
         ChatDetalleContainerComponent,
-        ChatDetalleViewComponent,        FotoComponent,
+        ChatDetalleViewComponent,
+        FotoComponent,
         FotoContainerComponent,
-        FotoViewComponent,        MascotaComponent,
+        FotoViewComponent,
+        MascotaComponent,
         MascotaContainerComponent,
-        MascotaViewComponent,        PersonaComponent,
+        MascotaViewComponent,
+        PersonaComponent,
         PersonaContainerComponent,
         PersonaViewComponent,
     ],
@@ -122,14 +130,22 @@ import { VeterinariaRoutingModule } from '@app/module/veterinaria/veterinaria.ro
         SharedModule
     ],
     exports: [
-        ChatViewComponent,        ChatDetalleViewComponent,        FotoViewComponent,        MascotaViewComponent,        PersonaViewComponent,
+        ChatViewComponent,
+        ChatDetalleViewComponent,
+        FotoViewComponent,
+        MascotaViewComponent,
+        PersonaViewComponent,
     ],
     providers: [
         ChatFacade,
-        ChatService,        ChatDetalleFacade,
-        ChatDetalleService,        FotoFacade,
-        FotoService,        MascotaFacade,
-        MascotaService,        PersonaFacade,
+        ChatService,
+        ChatDetalleFacade,
+        ChatDetalleService,
+        FotoFacade,
+        FotoService,
+        MascotaFacade,
+        MascotaService,
+        PersonaFacade,
         PersonaService,
     ]
 })

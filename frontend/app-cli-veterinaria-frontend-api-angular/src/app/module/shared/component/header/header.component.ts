@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {HeaderComponent}
+ * @overview        {HeaderComponent}
  *
  * @version         2.0
  *
@@ -44,19 +44,23 @@ export class HeaderComponent implements OnInit {
                 name: 'Chat',
                 route: 'chat',
                 items: []
-            },            {
+            },
+            {
                 name: 'ChatDetalle',
                 route: 'chat-detalle',
                 items: []
-            },            {
+            },
+            {
                 name: 'Foto',
                 route: 'foto',
                 items: []
-            },            {
+            },
+            {
                 name: 'Mascota',
                 route: 'mascota',
                 items: []
-            },            {
+            },
+            {
                 name: 'Persona',
                 route: 'persona',
                 items: []

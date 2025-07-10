@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {FotoRestAssembler}
+ * @overview        {FotoRestAssembler}
  *
  * @version         2.0
  *

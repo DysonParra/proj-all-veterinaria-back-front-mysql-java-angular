@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {MascotaRestAssembler}
+ * @overview        {MascotaRestAssembler}
  *
  * @version         2.0
  *
